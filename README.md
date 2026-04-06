@@ -16,3 +16,7 @@ Open `index.html` in a browser.
 Your site will be published at:
 
 - `https://<your-username>.github.io/<repo-name>/`
+
+## Future migration note
+
+If this teaser evolves into the full app (for example React/Next.js), we may migrate hosting to Vercel for easier app-focused deployment workflows.
