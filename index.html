@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archmatter teaser landing page.">
+  <title>archmatter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Roboto+Mono:wght@100;300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:   #1c1a17;
+      --paper: #fafaf7;
+      --faint: #c0bbb4;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Roboto Mono", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      padding: 48px 32px;
+    }
+
+    .lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wm {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: clamp(40px, 12vw, 96px);
+      color: var(--ink);
+      line-height: 1;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .tag {
+      font-family: "Roboto Mono", monospace;
+      font-weight: 100;
+      color: var(--faint);
+      text-transform: lowercase;
+      white-space: nowrap;
+      display: block;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      font-family: "Roboto Mono", monospace;
+      font-weight: 100;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      color: var(--faint);
+    }
+  </style>
+</head>
+<body>
+  <div class="lockup">
+    <span class="wm" id="wm">archmatter</span>
+    <span class="tag" id="tag">direct modeling for architects</span>
+  </div>
+
+  <div class="footer">coming soon</div>
+
+  <script>
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    function fitTag(wmEl, tagEl) {
+      const wmW = wmEl.getBoundingClientRect().width;
+      const tagText = tagEl.textContent.trim();
+      const charCount = tagText.length;
+      const testSizes = [];
+
+      for (let s = 8; s <= 18; s += 0.5) testSizes.push(s);
+
+      let bestSize = 10;
+      let bestSpacingEm = 0.2;
+
+      for (const size of testSizes) {
+        ctx.font = `100 ${size}px "Roboto Mono", monospace`;
+        const naturalW = ctx.measureText(tagText).width;
+        const spacingPx = (wmW - naturalW) / (charCount - 1);
+        const spacingEm = spacingPx / size;
+
+        if (spacingEm >= 0.01 && spacingEm <= 0.6) {
+          bestSize = size;
+          bestSpacingEm = spacingEm;
+        }
+      }
+
+      tagEl.style.fontSize = bestSize + "px";
+      tagEl.style.letterSpacing = bestSpacingEm + "em";
+    }
+
+    function align() {
+      fitTag(document.getElementById("wm"), document.getElementById("tag"));
+    }
+
+    if (document.fonts) {
+      document.fonts.ready.then(align);
+    } else {
+      window.addEventListener("load", align);
+    }
+
+    window.addEventListener("resize", align);
+  </script>
+</body>
+</html>
