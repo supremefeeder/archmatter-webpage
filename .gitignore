@@ -4,5 +4,5 @@
 !.github/workflows/
 !.github/workflows/**
 !code/
-!code/code/
-!code/code/**
+!code/**
+.DS_Store
