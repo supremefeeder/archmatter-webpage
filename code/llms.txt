@@ -1,0 +1,24 @@
+# Archmatter
+
+> A BIM tool for architects built for sketching, not configuring. Shape geometry first, add parameters when you're ready. Web-based, no installation.
+
+Archmatter is a browser-based modeling tool for architects, currently in early access. The public site is a single landing page with product positioning and an email waitlist.
+
+## Primary URL
+
+- https://archmatter.io/
+
+## Key messages
+
+- Headline: Between the idea and the line
+- Category: BIM / architectural modeling in the browser
+- Differentiator: Built for sketching, not configuring — shape geometry first, add parameters when ready
+
+## Contact / signup
+
+- Early access waitlist via the email form on https://archmatter.io/
+
+## Crawling
+
+- Sitemap: https://archmatter.io/sitemap.xml
+- Robots: https://archmatter.io/robots.txt (allows all crawlers)
