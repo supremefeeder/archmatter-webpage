@@ -5,4 +5,6 @@
 !.github/workflows/**
 !code/
 !code/**
+code/waitlist.config.js
+code/waitlist.config.local.js
 .DS_Store

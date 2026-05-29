@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://archmatter.io/sitemap.xml
